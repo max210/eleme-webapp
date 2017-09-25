@@ -255,11 +255,8 @@ export default {
     opacity: 1;
     background: rgba(7, 17, 27, 0.8);
     transition: all 0.5s;
-    &.fade-enter {
-      opacity: 0;
-      background: rgba(7, 17, 27, 0);
-    }
-    &.fade-leave-to {
+    backdrop-filter: blur(5px);
+    &.fade-enter, &.fade-leave-to {
       opacity: 0;
       background: rgba(7, 17, 27, 0);
     }
