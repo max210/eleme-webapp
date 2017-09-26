@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
 import Goods from 'components/goods/goods'
 import Seller from 'components/seller/seller'
 import Ratings from 'components/ratings/ratings'
