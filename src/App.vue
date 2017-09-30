@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import header from 'components/header/header'
+import Header from 'components/header/header'
 import 'common/fontsFolder/icon.scss'
 
 const errok = 0
@@ -19,7 +19,7 @@ const errok = 0
 export default {
   name: 'app',
   components: {
-    'v-header': header
+    'v-header': Header
   },
   data () {
     return {
