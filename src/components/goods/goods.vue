@@ -36,8 +36,7 @@
         </li>
       </ul>
     </div>
-
-    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart :seller="seller"></shopcart>
   </div>
 </template>
 
@@ -48,11 +47,11 @@ import shopcart from 'components/shopcart/shopcart'
 const errok = 0
 
 export default {
-  props: {
-    seller: {
-      type: Object
-    }
-  },
+  // props: {
+  //   seller: {
+  //     type: Object
+  //   }
+  // },
   components: {
     shopcart
   },
@@ -60,6 +59,7 @@ export default {
     return {
       goods: [],
       listHeight: [],
+      seller: {},
       scrollY: 0
     }
   },
@@ -82,13 +82,21 @@ export default {
       this.goodsOriginal = response.body
       if (this.goodsOriginal.errno === errok) {
         this.goods = this.goodsOriginal.data
-
         this.$nextTick(() => {
           this._initScroll()
           this._calulateHeight()
         })
       }
     }, response => {
+    })
+    this.$http.get('/api/seller').then(response => {
+      this.sellerOriginal = response.body
+      if (this.sellerOriginal.errno === errok) {
+        this.seller = this.sellerOriginal.data
+        console.log('ddd')
+      }
+    }, response => {
+
     })
   },
   methods: {

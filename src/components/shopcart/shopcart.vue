@@ -7,13 +7,18 @@
           <div class="logo">
             <i class="icon-shopping_cart"></i>
           </div>
+          <div class="num">
+
+          </div>
         </div>
-        <div class="price">10元</div>
-        <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
+        <div class="price">￥{{totalPrice}}</div>
+        <div class="desc">另需配送费￥{{seller.deliveryPrice}}元</div>
       </div>
 
       <div class="content-right">
-
+        <div class="pay">
+          ￥{{seller.minPrice}}元起送
+        </div>
       </div>
     </div>
   </div>
@@ -22,13 +27,30 @@
 <script>
 export default {
   props: {
-    deliveryPrice: {
-      type: Number,
-      default: 0
+    seller: {
+      type: Object
     },
-    minPrice: {
-      type: Number,
-      default: 0
+    selectfoods: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
+  computed: {
+    totalPrice () {
+      let total = 0
+      this.selectfoods.forEach((food) => {
+        total += food.price * food.count
+      })
+      return total
+    },
+    totalCount () {
+      let count = 0
+      this.selectfoods.forEach((food) => {
+        count += food.count
+      })
+      return count
     }
   },
   data () {
@@ -52,8 +74,9 @@ export default {
   .content {
     display: flex;
     background: #141d27;
+    color: rgba(255, 255, 255, .4);
     .content-left {
-      float: 1;
+      flex: 1;
       .logo-wrapper {
         display: inline-block;
         position: relative;
@@ -78,6 +101,21 @@ export default {
             line-height: 44px;
           }
         }
+        .num {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 24px;
+          height: 16px;
+          line-height: 16px;
+          text-align: center;
+          border-radius: 16px;
+          font-size: 9px;
+          font-weight: 700;
+          color: #fff;
+          background: rgb(240, 20, 20);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+        }
       }
       .price {
         display: inline-block;
@@ -89,21 +127,26 @@ export default {
         border-right: 1px solid rgba(255, 255, 255, .1);
         font-size: 16px;
         font-weight: 700px;
-        color: rgba(255, 255, 255, .4);
       }
       .desc {
         display: inline-block;
         vertical-align: top;
         line-height: 24px;
         margin: 12px 0 0 12px;
-        color: rgba(255, 255, 255, .4);
         font-size: 10px;
-
       }
     }
     .content-right {
       float: 0 0 105px;
       width: 105px;
+      .pay {
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        background: #2b333b;
+      }
     }
   }
 }
