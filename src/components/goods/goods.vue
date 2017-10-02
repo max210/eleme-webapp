@@ -93,7 +93,6 @@ export default {
       this.sellerOriginal = response.body
       if (this.sellerOriginal.errno === errok) {
         this.seller = this.sellerOriginal.data
-        console.log('ddd')
       }
     }, response => {
 
