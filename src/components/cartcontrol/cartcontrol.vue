@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss">
   .cartcontrol {
-    font-size: 0;
+    font-size: 16px;
     .cart-decrease, .cart-add {
       display: inline-block;
       padding: 6px;
