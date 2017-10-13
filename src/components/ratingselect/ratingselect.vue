@@ -59,11 +59,9 @@ export default {
   },
   methods: {
     select (type) {
-      this.selectType = type
       this.$emit('ratingfuc', type)
     },
     toggleContent () {
-      this.onlyContent = !this.onlyContent
       this.$emit('contentfuc', this.onlyContent)
     }
   }

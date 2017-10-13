@@ -6,7 +6,7 @@
       <div class="tab-item"><router-link :to="{name: 'Ratings'}" class="btn">评论</router-link></div>
       <div class="tab-item"><router-link :to="{name: 'Seller'}" class="btn">商家</router-link></div>
     </div>
-  <keep-alive><router-view></router-view></keep-alive>
+  <keep-alive><router-view :seller="seller"></router-view></keep-alive>
   </div>
 </template>
 
