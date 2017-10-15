@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import {urlParse} from 'common/js/util'
 import Header from 'components/header/header'
 import 'common/fontsFolder/icon.scss'
 
@@ -23,7 +24,12 @@ export default {
   },
   data () {
     return {
-      seller: {}
+      seller: {
+        id: (() => {
+          let queryParam = urlParse()
+          return queryParam.id
+        })()
+      }
     }
   },
   created () {
